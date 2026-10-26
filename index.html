@@ -509,6 +509,67 @@
       color: var(--red);
     }
 
+    .carte h3.sub {
+      margin-top: 32px;
+    }
+
+    .carte .wide {
+      grid-column: span 2;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+    }
+
+    .vins {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .93rem;
+    }
+
+    .vins th {
+      font-weight: 600;
+      color: var(--brown);
+      text-align: right;
+      padding: 4px 0 8px 10px;
+      white-space: nowrap;
+    }
+
+    .vins th small {
+      display: block;
+      font-weight: 400;
+      color: var(--muted);
+      font-size: .78rem;
+    }
+
+    .vins td {
+      padding: 7px 0 7px 10px;
+      border-bottom: 1px dashed #e4dcd2;
+      text-align: right;
+      color: var(--red);
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .vins td:first-child {
+      text-align: left;
+      color: var(--ink);
+      font-weight: 500;
+      padding-left: 0;
+      white-space: normal;
+    }
+
+    .vins tr.cat td {
+      text-align: left;
+      color: var(--muted);
+      font-size: .8rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      padding-top: 16px;
+      padding-left: 0;
+      border-bottom: none;
+    }
+
     .carte li small {
       display: block;
       font-weight: 400;
@@ -738,6 +799,14 @@
         gap: 28px;
       }
 
+      .carte .wide {
+        grid-column: auto;
+      }
+
+      .vins {
+        font-size: .82rem;
+      }
+
       .gallery {
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 300px 200px;
@@ -876,7 +945,7 @@
           </div>
           <div class="dish-content">
             <h3>Le Burger du Brazilia</h3>
-            <p>Steak haché, œuf au plat, bacon grillé, oignons rouges et sa sauce maison.</p>
+            <p>Steak haché, œuf au plat, bacon, raclette, oignons rouges et sauce burger maison.</p>
           </div>
         </article>
 
@@ -887,7 +956,7 @@
           </div>
           <div class="dish-content">
             <h3>L'entrecôte</h3>
-            <p>Grillée à votre goût et nappée d'une sauce crémeuse au poivre.</p>
+            <p>Grillée à votre goût, sauce échalote, poivre ou bleu.</p>
           </div>
         </article>
 
@@ -924,16 +993,15 @@
       <div class="carte">
         <div>
           <h3>Salades</h3>
-          <p class="tailles">Petite <b>10,00 €</b> · Grande <b>14,00 €</b></p>
+          <p class="tailles">Petite / Grande</p>
           <ul>
-            <li>Salade Brazilia</li>
-            <li>Salade de chèvre chaud</li>
-            <li>Salade Océane</li>
-            <li>Salade Auvergnate</li>
-            <li>Salade Andalouse</li>
-            <li>Salade Caesar</li>
-            <li>Salade Végétarienne</li>
-            <li>Tomate Mozzarella</li>
+            <li><span>Salade de chèvre chaud <small>jambon cru, tomates, œufs, chèvre, oignons</small></span><span class="prix">10,00 / 14,00 €</span></li>
+            <li><span>Salade Océane <small>œufs, tomates, champignons, saumon fumé, surimi</small></span><span class="prix">10,00 / 14,00 €</span></li>
+            <li><span>Salade Auvergnate <small>œufs, tomates, jambon d'Auvergne, bleu, oignons, noix</small></span><span class="prix">10,00 / 14,00 €</span></li>
+            <li><span>Salade Parisienne <small>tomates, œufs, jambon blanc, emmental, noix</small></span><span class="prix">10,00 / 14,00 €</span></li>
+            <li><span>Salade Gésiers <small>tomates, gésiers, œufs, champignons frais, vinaigre de framboise</small></span><span class="prix">10,00 / 14,00 €</span></li>
+            <li><span>Salade Caesar <small>œufs, poulet pané, tomates, parmesan</small></span><span class="prix">10,00 / 14,00 €</span></li>
+            <li><span>Salade Périgourdine <small>tomates, œufs, noix, magret, gésiers, foie gras</small></span><span class="prix">13,00 / 17,00 €</span></li>
           </ul>
         </div>
 
@@ -941,32 +1009,82 @@
           <h3>Plats</h3>
           <ul>
             <li><span>Croque-Monsieur <small>frites, salade</small></span><span class="prix">10,00 €</span></li>
-            <li><span>Croque-Madame <small>frites, salade</small></span><span class="prix">11,00 €</span></li>
             <li><span>Croque-Saumon <small>frites, salade</small></span><span class="prix">10,00 €</span></li>
-            <li><span>Entrecôte <small>frites, salade</small></span><span class="prix">19,00 €</span></li>
-            <li><span>Tartare de bœuf au couteau <small>frites, salade</small></span><span class="prix">17,00 €</span></li>
-            <li><span>Cuisses de grenouilles <small>frites, salade</small></span><span class="prix">16,00 €</span></li>
-            <li><span>Burger du Brazilia <small>frites</small></span><span class="prix">14,00 €</span></li>
-            <li><span>Plat du jour <small>selon l'ardoise</small></span></li>
+            <li><span>Croque-Madame <small>frites, salade</small></span><span class="prix">11,00 €</span></li>
+            <li><span>Entrecôte <small>frites, salade · sauce échalote, poivre ou bleu</small></span><span class="prix">19,00 €</span></li>
+            <li><span>Plat du jour <small>sauf le jeudi</small></span><span class="prix">13,00 €</span></li>
+            <li><span>Cuisses de grenouilles <small>frites, salade</small></span><span class="prix">18,00 €</span></li>
+            <li><span>Gambas flambées au Cognac <small>à la crème d'ail, riz</small></span><span class="prix">19,00 €</span></li>
+            <li><span>Andouillette sauce moutarde <small>frites</small></span><span class="prix">14,00 €</span></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3>Nos burgers</h3>
+          <p class="tailles">Avec frites, salade, tomates, oignons rouges et fromage à raclette</p>
+          <ul>
+            <li><span>Burger du Brazilia <small>œuf, bacon, steak haché, sauce burger maison</small></span><span class="prix">15,00 €</span></li>
+            <li><span>Burger Auvergnat <small>œuf, bacon, steak haché, sauce au bleu</small></span><span class="prix">15,00 €</span></li>
+            <li><span>Burger Poulet <small>œuf, bacon, escalope de poulet panée, sauce burger maison</small></span><span class="prix">16,00 €</span></li>
+            <li><span>Burger Montagnard <small>œuf, bacon, jambon cru, chèvre chaud pané, sauce au bleu</small></span><span class="prix">15,00 €</span></li>
+            <li><span>Burger Végétarien <small>galette de pommes de terre, œuf, sauce burger maison</small></span><span class="prix">15,00 €</span></li>
+            <li><span>Burger Terre et Mer <small>galette de pommes de terre, œuf, saumon fumé, mayonnaise</small></span><span class="prix">17,00 €</span></li>
           </ul>
         </div>
 
         <div>
           <h3>Douceurs</h3>
           <ul>
-            <li>Dessert du jour</li>
-            <li>Café gourmand</li>
-            <li>Coupes glacées</li>
-            <li>Assiette de jambon cru</li>
-            <li>Assiette de fromages</li>
-            <li><span>Menu enfant <small>jambon ou steak haché, frites, une boule de glace</small></span><span class="prix">9,00 €</span></li>
+            <li><span>Assiette de fromages</span><span class="prix">5,00 €</span></li>
+            <li><span>Dessert du jour</span><span class="prix">5,00 €</span></li>
+            <li><span>Café gourmand</span><span class="prix">6,50 €</span></li>
+            <li><span>Thé gourmand</span><span class="prix">7,50 €</span></li>
+            <li><span>Menu enfant <small>jambon blanc ou steak haché, frites, une boule de glace</small></span><span class="prix">9,00 €</span></li>
           </ul>
+
+          <h3 class="sub">Boissons</h3>
+          <ul>
+            <li><span>Châteldon <small>70 cl</small></span><span class="prix">7,00 €</span></li>
+            <li><span>Badoit ou Evian <small>1 l</small></span><span class="prix">5,00 €</span></li>
+            <li><span>Badoit ou Evian <small>50 cl</small></span><span class="prix">3,50 €</span></li>
+            <li><span>Café</span><span class="prix">1,50 €</span></li>
+          </ul>
+        </div>
+
+        <div class="wide">
+          <h3>Vins</h3>
+          <div class="table-wrap">
+            <table class="vins">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Verre<small>12 cl</small></th>
+                  <th>Carafe<small>25 cl</small></th>
+                  <th>Carafe<small>50 cl</small></th>
+                  <th>Bouteille<small>75 cl</small></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="cat"><td colspan="5">Vin blanc</td></tr>
+                <tr><td>Viognier</td><td>3,00 €</td><td>6,00 €</td><td>10,00 €</td><td>18,00 €</td></tr>
+                <tr><td>Alsace</td><td>3,00 €</td><td>6,00 €</td><td>10,00 €</td><td>19,00 €</td></tr>
+                <tr><td>Bourgogne Aligoté</td><td>3,00 €</td><td>6,00 €</td><td>12,00 €</td><td>24,00 €</td></tr>
+                <tr><td>Tariquet</td><td>3,00 €</td><td>6,00 €</td><td>12,00 €</td><td>20,00 €</td></tr>
+                <tr><td>Sancerre</td><td>5,00 €</td><td>10,00 €</td><td>20,00 €</td><td>35,00 €</td></tr>
+                <tr class="cat"><td colspan="5">Vin rouge</td></tr>
+                <tr><td>Pic Saint-Loup</td><td>3,00 €</td><td>6,00 €</td><td>12,00 €</td><td>19,00 €</td></tr>
+                <tr><td>Côtes du Rhône</td><td>3,00 €</td><td>6,00 €</td><td>10,00 €</td><td>18,00 €</td></tr>
+                <tr><td>Saint-Nicolas-de-Bourgueil</td><td>3,00 €</td><td>6,00 €</td><td>12,00 €</td><td>20,00 €</td></tr>
+                <tr class="cat"><td colspan="5">Vin rosé</td></tr>
+                <tr><td>Côtes de Provence</td><td>3,00 €</td><td>6,00 €</td><td>10,00 €</td><td>18,00 €</td></tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
 
       <p class="carte-note">
-        Formule plat du jour + dessert, vins au verre ou en carafe.
-        Prix indicatifs, susceptibles d'évoluer : la carte complète est disponible sur place.
+        Prix nets, taxes et service compris. Photos non contractuelles.
       </p>
     </section>
 
@@ -974,8 +1092,7 @@
       <div class="eyebrow" style="color:#ffd9d2">Le rendez-vous de la semaine</div>
       <h2>Tous les jeudis, c'est couscous !</h2>
       <div class="prices">
-        <div class="price"><strong>12,00 €</strong>Couscous</div>
-        <div class="price"><strong>15,00 €</strong>Couscous + dessert</div>
+        <div class="price"><strong>13,00 €</strong>Couscous</div>
       </div>
     </div>
 
