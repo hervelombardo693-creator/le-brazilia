@@ -40,6 +40,8 @@
       background: var(--cream);
       color: var(--ink);
       line-height: 1.6;
+      /* Side slide-ins must not widen the page on phones */
+      overflow-x: clip;
     }
 
     img {
@@ -57,6 +59,39 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      transition: transform .8s cubic-bezier(.2, .7, .2, 1);
+    }
+
+    .dish:hover .photo img,
+    .gallery figure:hover img,
+    .about .photo:hover img {
+      transform: scale(1.07);
+    }
+
+    /* Scroll reveal: the script adds .reveal, so without JS everything stays visible.
+       "html" outranks the cards' own hover transitions until the script removes .reveal. */
+    html .reveal {
+      opacity: 0;
+      transform: translateY(36px);
+      transition: opacity .8s ease, transform .8s cubic-bezier(.2, .7, .2, 1);
+      transition-delay: var(--d, 0s);
+    }
+
+    html .reveal.from-left {
+      transform: translateX(-48px);
+    }
+
+    html .reveal.from-right {
+      transform: translateX(48px);
+    }
+
+    html .reveal.zoom {
+      transform: scale(.88);
+    }
+
+    html .reveal.visible {
+      opacity: 1;
+      transform: none;
     }
 
     /* ---------- Header ---------- */
@@ -67,6 +102,7 @@
       z-index: 10;
       background: var(--brown);
       color: white;
+      transition: padding .3s, box-shadow .3s, background .3s;
       padding: 12px 6%;
       display: flex;
       justify-content: space-between;
@@ -110,6 +146,43 @@
       font-size: .95rem;
     }
 
+    header.scrolled {
+      padding-top: 6px;
+      padding-bottom: 6px;
+      background: rgba(59, 42, 38, .94);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, .18);
+    }
+
+    .logo strong {
+      transition: font-size .3s;
+    }
+
+    header.scrolled .logo strong {
+      font-size: 1.7rem;
+    }
+
+    nav a {
+      position: relative;
+    }
+
+    /* Underline that grows on hover */
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -4px;
+      height: 2px;
+      background: var(--rose);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .3s;
+    }
+
+    nav a:hover::after {
+      transform: scaleX(1);
+    }
+
     nav a:hover {
       color: var(--rose);
     }
@@ -117,19 +190,94 @@
     /* ---------- Hero ---------- */
 
     .hero {
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
       min-height: 640px;
       display: flex;
       align-items: flex-end;
       padding: 90px 6%;
       color: white;
-      background:
-        linear-gradient(0deg, rgba(36, 26, 23, .88) 0%, rgba(36, 26, 23, .35) 55%, rgba(36, 26, 23, .1) 100%),
-        url("images/terrasse-vue.webp") center/cover,
-        var(--brown-deep);
+      background: var(--brown-deep);
+    }
+
+    /* Slow zoom on the terrace photo */
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background: url("images/terrasse-vue.webp") center/cover;
+      animation: kenburns 18s ease-out forwards;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(0deg, rgba(36, 26, 23, .88) 0%, rgba(36, 26, 23, .35) 55%, rgba(36, 26, 23, .1) 100%);
     }
 
     .hero-content {
       max-width: 680px;
+    }
+
+    /* Staggered entrance of the hero text */
+    .hero-content > * {
+      opacity: 0;
+      animation: rise .9s cubic-bezier(.2, .7, .2, 1) forwards;
+    }
+
+    .hero-content > :nth-child(1) { animation-delay: .2s; }
+    .hero-content > :nth-child(2) { animation-delay: .35s; }
+    .hero-content > :nth-child(3) { animation-delay: .55s; }
+    .hero-content > :nth-child(4) { animation-delay: .75s; }
+
+    .scroll-hint {
+      position: absolute;
+      left: 50%;
+      bottom: 22px;
+      width: 26px;
+      height: 42px;
+      margin-left: -13px;
+      border: 2px solid rgba(255, 255, 255, .7);
+      border-radius: 14px;
+      opacity: 0;
+      animation: fade-in 1s 1.4s forwards;
+    }
+
+    .scroll-hint::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 8px;
+      width: 4px;
+      height: 8px;
+      margin-left: -2px;
+      border-radius: 2px;
+      background: white;
+      animation: wheel 1.8s ease-in-out infinite;
+    }
+
+    @keyframes kenburns {
+      from { transform: scale(1.15); }
+      to { transform: scale(1); }
+    }
+
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(28px); }
+      to { opacity: 1; transform: none; }
+    }
+
+    @keyframes fade-in {
+      to { opacity: 1; }
+    }
+
+    @keyframes wheel {
+      0% { opacity: 0; transform: translateY(0); }
+      30% { opacity: 1; }
+      100% { opacity: 0; transform: translateY(14px); }
     }
 
     .eyebrow {
@@ -411,6 +559,15 @@
       line-height: 1.1;
     }
 
+    .price {
+      transition: transform .3s, background .3s;
+    }
+
+    .price:hover {
+      transform: translateY(-4px) rotate(-1deg);
+      background: rgba(255, 255, 255, .22);
+    }
+
     /* ---------- Sweet & drinks gallery ---------- */
 
     .gallery {
@@ -607,6 +764,33 @@
         grid-column: auto;
       }
     }
+
+    /* Parallax on the fountain photo, desktop only (fixed backgrounds misbehave on phones) */
+    @media (hover: hover) and (min-width: 900px) {
+      .terrace {
+        background-attachment: scroll, fixed;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+
+      .hero-content > *,
+      .scroll-hint,
+      .reveal {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+
+      .terrace {
+        background-attachment: scroll !important;
+      }
+    }
   </style>
 </head>
 
@@ -641,6 +825,7 @@
           <a class="button ghost" href="#contact">Nous trouver</a>
         </div>
       </div>
+      <a class="scroll-hint" href="#restaurant" aria-label="Défiler vers le restaurant"></a>
     </section>
 
     <div class="strip">
@@ -874,6 +1059,57 @@
     <p>L'abus d'alcool est dangereux pour la santé, à consommer avec modération.</p>
     <p>© 2026 LE BRAZILIA. Tous droits réservés.</p>
   </footer>
+
+  <script>
+    // Header shrinks once the page is scrolled
+    const header = document.querySelector("header");
+    const onScroll = () => header.classList.toggle("scrolled", window.scrollY > 40);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+
+    // Scroll reveal: [selector, extra class, stagger between siblings in seconds]
+    const groups = [
+      [".section-title", "", 0],
+      [".about .photo", "from-left", 0],
+      [".about > div:last-child", "from-right", 0],
+      [".dish", "", .12],
+      [".carte > div", "", .15],
+      [".carte-note", "", 0],
+      [".couscous h2, .couscous .eyebrow", "", .1],
+      [".price", "zoom", .15],
+      [".gallery figure", "zoom", .1],
+      [".terrace > div", "", 0],
+      [".contact-card", "", .15]
+    ];
+
+    if ("IntersectionObserver" in window &&
+        !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const el = entry.target;
+            el.classList.add("visible");
+            observer.unobserve(el);
+            // Once revealed, hand the element back to its own hover transitions
+            const delay = parseFloat(el.style.getPropertyValue("--d")) || 0;
+            setTimeout(() => {
+              el.classList.remove("reveal", "visible", "from-left", "from-right", "zoom");
+              el.style.removeProperty("--d");
+            }, 900 + delay * 1000);
+          }
+        });
+      }, { threshold: 0.15, rootMargin: "0px 0px -40px 0px" });
+
+      groups.forEach(([selector, extra, stagger]) => {
+        document.querySelectorAll(selector).forEach((el, i) => {
+          el.classList.add("reveal");
+          if (extra) el.classList.add(extra);
+          if (stagger) el.style.setProperty("--d", (i * stagger) + "s");
+          observer.observe(el);
+        });
+      });
+    }
+  </script>
 
 </body>
 </html>
