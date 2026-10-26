@@ -339,6 +339,26 @@
       padding: 7px 0;
       border-bottom: 1px dashed #e4dcd2;
       font-weight: 500;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+    }
+
+    .prix {
+      color: var(--red);
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .carte .tailles {
+      color: var(--muted);
+      font-size: .9rem;
+      margin: -8px 0 6px;
+    }
+
+    .carte .tailles b {
+      color: var(--red);
     }
 
     .carte li small {
@@ -719,6 +739,7 @@
       <div class="carte">
         <div>
           <h3>Salades</h3>
+          <p class="tailles">Petite <b>10,00 €</b> · Grande <b>14,00 €</b></p>
           <ul>
             <li>Salade Brazilia</li>
             <li>Salade de chèvre chaud</li>
@@ -734,14 +755,14 @@
         <div>
           <h3>Plats</h3>
           <ul>
-            <li>Croque-Monsieur <small>frites, salade</small></li>
-            <li>Croque-Madame <small>frites, salade</small></li>
-            <li>Croque-Saumon <small>frites, salade</small></li>
-            <li>Entrecôte <small>frites, salade</small></li>
-            <li>Tartare de bœuf au couteau</li>
-            <li>Cuisses de grenouilles <small>frites, salade</small></li>
-            <li>Burger du Brazilia <small>frites</small></li>
-            <li>Plat du jour</li>
+            <li><span>Croque-Monsieur <small>frites, salade</small></span><span class="prix">10,00 €</span></li>
+            <li><span>Croque-Madame <small>frites, salade</small></span><span class="prix">11,00 €</span></li>
+            <li><span>Croque-Saumon <small>frites, salade</small></span><span class="prix">10,00 €</span></li>
+            <li><span>Entrecôte <small>frites, salade</small></span><span class="prix">19,00 €</span></li>
+            <li><span>Tartare de bœuf au couteau <small>frites, salade</small></span><span class="prix">17,00 €</span></li>
+            <li><span>Cuisses de grenouilles <small>frites, salade</small></span><span class="prix">16,00 €</span></li>
+            <li><span>Burger du Brazilia <small>frites</small></span><span class="prix">14,00 €</span></li>
+            <li><span>Plat du jour <small>selon l'ardoise</small></span></li>
           </ul>
         </div>
 
@@ -753,14 +774,14 @@
             <li>Coupes glacées</li>
             <li>Assiette de jambon cru</li>
             <li>Assiette de fromages</li>
-            <li>Menu enfant <small>avec une boule de glace</small></li>
+            <li><span>Menu enfant <small>jambon ou steak haché, frites, une boule de glace</small></span><span class="prix">9,00 €</span></li>
           </ul>
         </div>
       </div>
 
       <p class="carte-note">
         Formule plat du jour + dessert, vins au verre ou en carafe.
-        Carte et prix disponibles sur place.
+        Prix indicatifs, susceptibles d'évoluer : la carte complète est disponible sur place.
       </p>
     </section>
 
