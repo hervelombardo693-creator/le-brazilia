@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="LE BRAZILIA à Vichy : snack bar, restaurant et salon de thé avec grande terrasse face à la fontaine. Burgers, entrecôtes, croques, salades, couscous du jeudi et desserts maison.">
+  <title>LE BRAZILIA | Snack bar & salon de thé à Vichy</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --brown: #3b2a26;      /* store awning */
+      --brown-deep: #241a17;
+      --red: #b8392e;        /* menu accent lines */
+      --rose: #e8c3b6;       /* terrace parasols */
+      --cream: #faf6f0;
+      --paper: #f1ebe2;
+      --ink: #2a2421;
+      --muted: #6f6560;
+      --script: "Dancing Script", cursive;
+      --sans: "Inter", Arial, Helvetica, sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 76px;
+    }
+
+    body {
+      font-family: var(--sans);
+      background: var(--cream);
+      color: var(--ink);
+      line-height: 1.6;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    /* Photo frames keep a warm tone if an image is missing */
+    .photo {
+      background: var(--paper);
+      overflow: hidden;
+    }
+
+    .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* ---------- Header ---------- */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: var(--brown);
+      color: white;
+      padding: 12px 6%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      color: white;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+    }
+
+    .logo strong {
+      font-family: var(--script);
+      font-size: 2rem;
+      font-weight: 700;
+    }
+
+    .logo small {
+      font-size: .68rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-top: 4px;
+    }
+
+    nav {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: .95rem;
+    }
+
+    nav a:hover {
+      color: var(--rose);
+    }
+
+    /* ---------- Hero ---------- */
+
+    .hero {
+      min-height: 640px;
+      display: flex;
+      align-items: flex-end;
+      padding: 90px 6%;
+      color: white;
+      background:
+        linear-gradient(0deg, rgba(36, 26, 23, .88) 0%, rgba(36, 26, 23, .35) 55%, rgba(36, 26, 23, .1) 100%),
+        url("images/terrasse-vue.webp") center/cover,
+        var(--brown-deep);
+    }
+
+    .hero-content {
+      max-width: 680px;
+    }
+
+    .eyebrow {
+      color: var(--rose);
+      text-transform: uppercase;
+      font-weight: 600;
+      font-size: .82rem;
+      letter-spacing: 3px;
+    }
+
+    .eyebrow.red {
+      color: var(--red);
+    }
+
+    h1 {
+      font-family: var(--script);
+      font-size: clamp(3.4rem, 9vw, 6.5rem);
+      font-weight: 700;
+      line-height: 1;
+      margin: 14px 0 18px;
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      max-width: 540px;
+      margin-bottom: 30px;
+      color: rgba(255, 255, 255, .92);
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      display: inline-block;
+      background: var(--red);
+      color: white;
+      text-decoration: none;
+      padding: 13px 24px;
+      border-radius: 999px;
+      font-weight: 600;
+      transition: .2s;
+    }
+
+    .button:hover {
+      background: #9a2f25;
+      transform: translateY(-2px);
+    }
+
+    .button.ghost {
+      background: transparent;
+      border: 1.5px solid rgba(255, 255, 255, .8);
+    }
+
+    .button.ghost:hover {
+      background: white;
+      color: var(--brown);
+    }
+
+    /* ---------- Highlights strip ---------- */
+
+    .strip {
+      background: var(--paper);
+      padding: 22px 6%;
+      display: flex;
+      justify-content: center;
+      gap: 12px 40px;
+      flex-wrap: wrap;
+      font-weight: 600;
+      color: var(--brown);
+      font-size: .95rem;
+    }
+
+    .strip span::before {
+      content: "•";
+      color: var(--red);
+      margin-right: 10px;
+    }
+
+    /* ---------- Sections ---------- */
+
+    section {
+      padding: 90px 6%;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .section-title h2,
+    .about h2 {
+      font-family: var(--script);
+      color: var(--brown);
+      font-size: clamp(2.5rem, 5vw, 3.6rem);
+      font-weight: 700;
+      line-height: 1.1;
+    }
+
+    .section-title p {
+      color: var(--muted);
+      margin-top: 8px;
+    }
+
+    .about {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      align-items: center;
+      gap: 60px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .about .photo {
+      height: 440px;
+      border-radius: 14px;
+    }
+
+    .about h2 {
+      margin: 8px 0 20px;
+    }
+
+    .about p {
+      margin-bottom: 16px;
+      color: #4a413d;
+    }
+
+    .about .button {
+      margin-top: 10px;
+    }
+
+    /* ---------- Dishes ---------- */
+
+    .dishes {
+      background: var(--paper);
+    }
+
+    .dish-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .dish {
+      background: white;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(59, 42, 38, .08);
+      transition: transform .2s;
+    }
+
+    .dish:hover {
+      transform: translateY(-5px);
+    }
+
+    .dish .photo {
+      height: 240px;
+    }
+
+    .dish-content {
+      padding: 20px 22px 24px;
+    }
+
+    .dish h3 {
+      color: var(--brown);
+      font-size: 1.15rem;
+      margin-bottom: 6px;
+    }
+
+    .dish p {
+      color: var(--muted);
+      font-size: .93rem;
+    }
+
+    /* ---------- Menu (la carte) ---------- */
+
+    .carte {
+      max-width: 1100px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 14px;
+      padding: 50px 50px 40px;
+      box-shadow: 0 8px 30px rgba(59, 42, 38, .07);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+    }
+
+    .carte h3 {
+      font-family: var(--script);
+      font-size: 2rem;
+      color: var(--brown);
+      border-bottom: 2px solid var(--red);
+      padding-bottom: 4px;
+      margin-bottom: 16px;
+    }
+
+    .carte ul {
+      list-style: none;
+    }
+
+    .carte li {
+      padding: 7px 0;
+      border-bottom: 1px dashed #e4dcd2;
+      font-weight: 500;
+    }
+
+    .carte li small {
+      display: block;
+      font-weight: 400;
+      color: var(--muted);
+      font-size: .85rem;
+    }
+
+    .carte-note {
+      text-align: center;
+      margin-top: 22px;
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    /* ---------- Couscous banner ---------- */
+
+    .couscous {
+      background: var(--red);
+      color: white;
+      text-align: center;
+      padding: 60px 6%;
+    }
+
+    .couscous h2 {
+      font-family: var(--script);
+      font-size: clamp(2.4rem, 5vw, 3.4rem);
+      line-height: 1.1;
+      margin-bottom: 18px;
+    }
+
+    .prices {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .price {
+      background: rgba(255, 255, 255, .14);
+      border: 1px solid rgba(255, 255, 255, .35);
+      border-radius: 12px;
+      padding: 14px 26px;
+    }
+
+    .price strong {
+      display: block;
+      font-size: 1.9rem;
+      line-height: 1.1;
+    }
+
+    /* ---------- Sweet & drinks gallery ---------- */
+
+    .gallery {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr 1fr;
+      grid-template-rows: 260px 260px;
+      gap: 16px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .gallery figure {
+      position: relative;
+      border-radius: 14px;
+    }
+
+    .gallery figure:first-child {
+      grid-row: span 2;
+    }
+
+    .gallery figcaption {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 40px 18px 14px;
+      color: white;
+      font-weight: 600;
+      background: linear-gradient(0deg, rgba(0, 0, 0, .65), transparent);
+    }
+
+    /* ---------- Terrace ---------- */
+
+    .terrace {
+      position: relative;
+      min-height: 460px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      background:
+        linear-gradient(rgba(36, 26, 23, .62), rgba(36, 26, 23, .62)),
+        url("images/facade-fontaine.webp") center/cover,
+        var(--brown);
+    }
+
+    .terrace h2 {
+      font-family: var(--script);
+      font-size: clamp(2.6rem, 6vw, 4rem);
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+
+    .terrace p {
+      max-width: 620px;
+      margin: 0 auto 28px;
+      font-size: 1.1rem;
+    }
+
+    /* ---------- Contact ---------- */
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .contact-card {
+      background: white;
+      padding: 32px;
+      border-radius: 14px;
+      box-shadow: 0 5px 25px rgba(59, 42, 38, .06);
+    }
+
+    .contact-card h3 {
+      color: var(--brown);
+      font-size: 1.35rem;
+      margin-bottom: 16px;
+    }
+
+    .contact-card p {
+      margin: 10px 0;
+    }
+
+    .contact-card a {
+      color: var(--red);
+      font-weight: 600;
+    }
+
+    .todo {
+      background: #fff1c9;
+      padding: 1px 6px;
+      border-radius: 4px;
+      font-size: .9em;
+    }
+
+    footer {
+      background: var(--brown-deep);
+      color: rgba(255, 255, 255, .85);
+      text-align: center;
+      padding: 36px 6%;
+      font-size: .92rem;
+    }
+
+    footer .logo-foot {
+      font-family: var(--script);
+      font-size: 2rem;
+      color: white;
+      display: block;
+    }
+
+    footer p {
+      margin: 4px;
+    }
+
+    /* ---------- Responsive ---------- */
+
+    @media (max-width: 1000px) {
+      .dish-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .carte {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 800px) {
+      header {
+        justify-content: center;
+        text-align: center;
+      }
+
+      .logo {
+        align-items: center;
+      }
+
+      nav {
+        justify-content: center;
+        gap: 16px;
+      }
+
+      .hero {
+        min-height: 540px;
+        padding: 60px 6%;
+      }
+
+      section {
+        padding: 64px 5%;
+      }
+
+      .about,
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .about .photo {
+        height: 300px;
+      }
+
+      .carte {
+        grid-template-columns: 1fr;
+        padding: 30px 22px;
+        gap: 28px;
+      }
+
+      .gallery {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 300px 200px;
+      }
+
+      .gallery figure:first-child {
+        grid-row: auto;
+        grid-column: span 2;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .dish-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery {
+        grid-template-columns: 1fr;
+        grid-template-rows: none;
+        grid-auto-rows: 260px;
+      }
+
+      .gallery figure:first-child {
+        grid-column: auto;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <a href="#accueil" class="logo">
+      <strong>Le Brazilia</strong>
+      <small>Snack bar · Salon de thé</small>
+    </a>
+
+    <nav>
+      <a href="#restaurant">Le restaurant</a>
+      <a href="#plats">Nos plats</a>
+      <a href="#carte">La carte</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="accueil">
+      <div class="hero-content">
+        <div class="eyebrow">Au cœur de Vichy</div>
+        <h1>Le Brazilia</h1>
+        <p>
+          Snack bar, restaurant et salon de thé, avec une grande terrasse
+          ensoleillée face à la fontaine. Une cuisine généreuse,
+          du matin au goûter.
+        </p>
+        <div class="actions">
+          <a class="button" href="#carte">Voir la carte</a>
+          <a class="button ghost" href="#contact">Nous trouver</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="strip">
+      <span>Grande terrasse</span>
+      <span>Plat du jour</span>
+      <span>Couscous le jeudi</span>
+      <span>Menu enfant</span>
+      <span>Salon de thé</span>
+    </div>
+
+    <section id="restaurant">
+      <div class="about">
+        <div class="photo">
+          <img src="images/facade-fontaine.webp"
+               alt="La façade du Brazilia et sa terrasse, derrière les jets d'eau de la fontaine">
+        </div>
+
+        <div>
+          <div class="eyebrow red">Notre maison</div>
+          <h2>Plus qu'un repas, un moment à partager.</h2>
+          <p>
+            Sous les parasols, au bord de la fontaine, LE BRAZILIA vous accueille
+            pour un déjeuner sur le pouce, un dîner entre amis ou une pause
+            gourmande l'après-midi.
+          </p>
+          <p>
+            Burgers, entrecôtes, croques gratinés et grandes salades côté
+            cuisine ; café gourmand, coupes glacées et cocktails côté
+            salon de thé. Des assiettes généreuses, servies avec le sourire.
+          </p>
+          <a class="button" href="#plats">Découvrir nos plats</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="dishes" id="plats">
+      <div class="section-title">
+        <div class="eyebrow red">Fait pour se régaler</div>
+        <h2>Nos incontournables</h2>
+        <p>Toutes nos assiettes sont servies avec frites maison et salade.</p>
+      </div>
+
+      <div class="dish-grid">
+        <article class="dish">
+          <div class="photo">
+            <img src="images/burger-brazilia.webp" loading="lazy"
+                 alt="Burger du Brazilia avec steak, œuf au plat, bacon et oignons rouges">
+          </div>
+          <div class="dish-content">
+            <h3>Le Burger du Brazilia</h3>
+            <p>Steak haché, œuf au plat, bacon grillé, oignons rouges et sa sauce maison.</p>
+          </div>
+        </article>
+
+        <article class="dish">
+          <div class="photo">
+            <img src="images/entrecote-poivre.webp" loading="lazy"
+                 alt="Entrecôte sauce au poivre, frites et salade">
+          </div>
+          <div class="dish-content">
+            <h3>L'entrecôte</h3>
+            <p>Grillée à votre goût et nappée d'une sauce crémeuse au poivre.</p>
+          </div>
+        </article>
+
+        <article class="dish">
+          <div class="photo">
+            <img src="images/croque-madame.webp" loading="lazy"
+                 alt="Croque-madame gratiné avec œuf au plat, frites et salade">
+          </div>
+          <div class="dish-content">
+            <h3>Le Croque-Madame</h3>
+            <p>Bien gratiné, couronné d'un œuf au plat et de ciboulette fraîche.</p>
+          </div>
+        </article>
+
+        <article class="dish">
+          <div class="photo">
+            <img src="images/plat-du-jour.webp" loading="lazy"
+                 alt="Assiette du jour avec frites en cornet, salade et citron">
+          </div>
+          <div class="dish-content">
+            <h3>Le plat du jour</h3>
+            <p>Une nouvelle recette chaque jour, à découvrir sur notre ardoise.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="carte">
+      <div class="section-title">
+        <div class="eyebrow red">Salé, sucré, à toute heure</div>
+        <h2>La carte</h2>
+      </div>
+
+      <div class="carte">
+        <div>
+          <h3>Salades</h3>
+          <ul>
+            <li>Salade Brazilia</li>
+            <li>Salade de chèvre chaud</li>
+            <li>Salade Océane</li>
+            <li>Salade Auvergnate</li>
+            <li>Salade Andalouse</li>
+            <li>Salade Caesar</li>
+            <li>Salade Végétarienne</li>
+            <li>Tomate Mozzarella</li>
+          </ul>
+        </div>
+
+        <div>
+          <h3>Plats</h3>
+          <ul>
+            <li>Croque-Monsieur <small>frites, salade</small></li>
+            <li>Croque-Madame <small>frites, salade</small></li>
+            <li>Croque-Saumon <small>frites, salade</small></li>
+            <li>Entrecôte <small>frites, salade</small></li>
+            <li>Tartare de bœuf au couteau</li>
+            <li>Cuisses de grenouilles <small>frites, salade</small></li>
+            <li>Burger du Brazilia <small>frites</small></li>
+            <li>Plat du jour</li>
+          </ul>
+        </div>
+
+        <div>
+          <h3>Douceurs</h3>
+          <ul>
+            <li>Dessert du jour</li>
+            <li>Café gourmand</li>
+            <li>Coupes glacées</li>
+            <li>Assiette de jambon cru</li>
+            <li>Assiette de fromages</li>
+            <li>Menu enfant <small>avec une boule de glace</small></li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="carte-note">
+        Formule plat du jour + dessert, vins au verre ou en carafe.
+        Carte et prix disponibles sur place.
+      </p>
+    </section>
+
+    <div class="couscous">
+      <div class="eyebrow" style="color:#ffd9d2">Le rendez-vous de la semaine</div>
+      <h2>Tous les jeudis, c'est couscous !</h2>
+      <div class="prices">
+        <div class="price"><strong>12,00 €</strong>Couscous</div>
+        <div class="price"><strong>15,00 €</strong>Couscous + dessert</div>
+      </div>
+    </div>
+
+    <section>
+      <div class="section-title">
+        <div class="eyebrow red">Côté salon de thé</div>
+        <h2>Douceurs & rafraîchissements</h2>
+        <p>Pour finir le repas ou s'offrir une pause l'après-midi.</p>
+      </div>
+
+      <div class="gallery">
+        <figure class="photo">
+          <img src="images/cafe-gourmand.webp" loading="lazy"
+               alt="Café gourmand : fondant au chocolat, crème brûlée, tarte, glace et fraise">
+          <figcaption>Le café gourmand</figcaption>
+        </figure>
+        <figure class="photo">
+          <img src="images/coupe-glacee.webp" loading="lazy"
+               alt="Coupe glacée avec chocolat et chantilly">
+          <figcaption>Coupes glacées</figcaption>
+        </figure>
+        <figure class="photo">
+          <img src="images/cocktails-terrasse.webp" loading="lazy"
+               alt="Cocktails servis en terrasse au soleil">
+          <figcaption>Cocktails en terrasse</figcaption>
+        </figure>
+        <figure class="photo" style="grid-column: span 2">
+          <img src="images/terrasse-vue.webp" loading="lazy"
+               alt="Un verre de vin blanc en terrasse, vue sur la place">
+          <figcaption>Un verre de vin face à la place</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <div class="terrace">
+      <div>
+        <div class="eyebrow">Aux beaux jours</div>
+        <h2>Une terrasse au bord de la fontaine</h2>
+        <p>
+          Installez-vous sous nos parasols et profitez du soleil de Vichy,
+          bercé par le bruit des jets d'eau.
+        </p>
+        <a href="#contact" class="button">Préparer votre visite</a>
+      </div>
+    </div>
+
+    <section id="contact">
+      <div class="section-title">
+        <h2>Retrouvez-nous</h2>
+        <p>À bientôt chez LE BRAZILIA à Vichy !</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-card">
+          <h3>Nos coordonnées</h3>
+          <p><strong>Adresse :</strong> <span class="todo">À compléter</span>, Vichy</p>
+          <p><strong>Téléphone :</strong> <span class="todo">À compléter</span></p>
+          <p><strong>Horaires :</strong> <span class="todo">À confirmer</span></p>
+        </div>
+
+        <div class="contact-card">
+          <h3>Nous rendre visite</h3>
+          <p>
+            Snack bar, restaurant et salon de thé sur la place,
+            avec terrasse face à la fontaine.
+          </p>
+          <p>
+            <a href="https://www.google.com/maps/search/?api=1&query=Le+Brazilia+Vichy"
+               target="_blank" rel="noopener noreferrer">
+              Ouvrir dans Google Maps →
+            </a>
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span class="logo-foot">Le Brazilia</span>
+    <p>Snack bar · Restaurant · Salon de thé — Vichy</p>
+    <p>L'abus d'alcool est dangereux pour la santé, à consommer avec modération.</p>
+    <p>© 2026 LE BRAZILIA. Tous droits réservés.</p>
+  </footer>
+
+</body>
+</html>
