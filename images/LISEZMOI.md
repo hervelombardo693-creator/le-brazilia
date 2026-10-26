@@ -9,7 +9,7 @@ Déposez ici les photos avec exactement ces noms :
 | Burger avec œuf et bacon | `burger-brazilia.webp` |
 | Entrecôte sauce au poivre | `entrecote-poivre.webp` |
 | Croque-madame | `croque-madame.webp` |
-| Assiette avec cornet de frites et citron | `plat-du-jour.webp` |
+| Cuisses de grenouilles | `cuisses-grenouilles.webp` |
 | Café gourmand | `cafe-gourmand.webp` |
 | Coupe glacée | `coupe-glacee.webp` |
 | Cocktails en terrasse | `cocktails-terrasse.webp` |
